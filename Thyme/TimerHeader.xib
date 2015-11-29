@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimerHeader" customModule="Thyme" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:15:35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXD-Rj-IYA">
+                    <rect key="frame" x="8" y="8" width="584" height="72"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-MY-w7R">
+                    <rect key="frame" x="8" y="80" width="584" height="30"/>
+                    <animations/>
+                    <state key="normal" title="8:56:24 all time">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cumulativeTimeTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="XrK-f8-gHw"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="256-dK-J7x">
+                    <rect key="frame" x="8" y="110" width="584" height="36"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-aX-4B7">
+                            <rect key="frame" x="0.0" y="0.0" width="292" height="36"/>
+                            <animations/>
+                            <state key="normal" title="Confirm"/>
+                            <connections>
+                                <action selector="confirmTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="dJv-oW-KuJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-Jc-ncU">
+                            <rect key="frame" x="292" y="0.0" width="292" height="36"/>
+                            <animations/>
+                            <state key="normal" title="Start"/>
+                            <connections>
+                                <action selector="startStopTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="q6R-30-rn0"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <animations/>
+                </stackView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qbh-aX-4B7" secondAttribute="bottom" constant="9" id="2xu-CX-98e"/>
+                <constraint firstItem="gVd-MY-w7R" firstAttribute="centerX" secondItem="OXD-Rj-IYA" secondAttribute="centerX" id="458-AC-urM"/>
+                <constraint firstItem="gVd-MY-w7R" firstAttribute="width" secondItem="OXD-Rj-IYA" secondAttribute="width" id="AsQ-5p-SEs"/>
+                <constraint firstItem="256-dK-J7x" firstAttribute="top" secondItem="gVd-MY-w7R" secondAttribute="bottom" id="Fz2-Hk-UYi"/>
+                <constraint firstItem="256-dK-J7x" firstAttribute="centerX" secondItem="gVd-MY-w7R" secondAttribute="centerX" id="bM7-e2-ujY"/>
+                <constraint firstItem="gVd-MY-w7R" firstAttribute="top" secondItem="OXD-Rj-IYA" secondAttribute="bottom" id="e1B-vd-yjf"/>
+                <constraint firstItem="256-dK-J7x" firstAttribute="width" secondItem="gVd-MY-w7R" secondAttribute="width" id="g3M-bg-Jiw"/>
+                <constraint firstItem="OXD-Rj-IYA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="qrp-sR-j15"/>
+                <constraint firstAttribute="trailing" secondItem="OXD-Rj-IYA" secondAttribute="trailing" constant="8" id="wlV-Bl-Jbx"/>
+                <constraint firstItem="OXD-Rj-IYA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="zKH-Ju-CCt"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="confirmButton" destination="qbh-aX-4B7" id="jxq-BE-0Jn"/>
+                <outlet property="cumulativeTimeButton" destination="gVd-MY-w7R" id="Tps-Lh-7Ct"/>
+                <outlet property="startButton" destination="aC8-Jc-ncU" id="STp-5i-pEj"/>
+                <outlet property="timerLabel" destination="OXD-Rj-IYA" id="bSk-RZ-yLO"/>
+            </connections>
+            <point key="canvasLocation" x="405" y="101.5"/>
+        </view>
+    </objects>
+</document>
