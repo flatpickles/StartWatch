@@ -12,22 +12,43 @@ enum ThymeState {
     case Unstarted, Started, Paused
 }
 
-struct ThymeSegment {
+class ThymeSegment : NSObject, NSCoding {
     let creationDate: NSDate
     var lastStarted: NSDate? = nil // if `nil`, segment is paused
     var duration: NSTimeInterval = 0
 
-    init() {
+    override init() {
         self.creationDate = NSDate()
+        super.init()
     }
 
-    init(creationDate: NSDate, duration: NSTimeInterval) {
+    init(creationDate: NSDate, duration: NSTimeInterval, lastStarted: NSDate?) {
         self.creationDate = creationDate
+        self.lastStarted = lastStarted
         self.duration = duration
+        super.init()
+    }
+
+    // MARK: NSCoding
+
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let creationDate = aDecoder.decodeObjectForKey("creationDate") as? NSDate,
+            let duration = aDecoder.decodeObjectForKey("duration") as? NSTimeInterval else {
+                return nil
+        }
+        let lastStarted = aDecoder.decodeObjectForKey("lastStarted") as? NSDate
+
+        self.init(creationDate: creationDate, duration: duration, lastStarted: lastStarted)
+    }
+
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.creationDate, forKey: "creationDate")
+        aCoder.encodeObject(self.lastStarted, forKey: "lastStarted")
+        aCoder.encodeObject(self.duration, forKey: "duration")
     }
 }
 
-class ThymeTimer {
+class ThymeTimer : NSObject, NSCoding {
     var name: String
     var pastSegments: [ThymeSegment]?
     var currentSegment: ThymeSegment?
@@ -52,6 +73,14 @@ class ThymeTimer {
 
     init(name: String) {
         self.name = name
+        super.init()
+    }
+
+    init(name: String, pastSegments: [ThymeSegment]?, currentSegment: ThymeSegment?) {
+        self.name = name
+        self.pastSegments = pastSegments
+        self.currentSegment = currentSegment
+        super.init()
     }
 
     func durationWithin(intervalBeforeNow: NSTimeInterval) -> NSTimeInterval {
@@ -63,7 +92,7 @@ class ThymeTimer {
     }
 
     func finalizeCurrentSegment() -> Bool {
-        guard var currentSegment = self.currentSegment else {
+        guard let currentSegment = self.currentSegment else {
             return false
         }
 
@@ -79,7 +108,24 @@ class ThymeTimer {
 
     class func debugTimer() -> ThymeTimer {
         let newTimer = ThymeTimer(name: "Debug Timer")
-        newTimer.pastSegments = [ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -1000000), duration: 100), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -20000000), duration: 200), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -30000000), duration: 100)]
+        newTimer.pastSegments = [ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -1000000), duration: 100, lastStarted: nil), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -20000000), duration: 200, lastStarted: nil), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -30000000), duration: 100, lastStarted: nil)]
         return newTimer
+    }
+
+    // MARK: NSCoding
+
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let name = aDecoder.decodeObjectForKey("name") as? String else {
+            return nil
+        }
+        let pastSegments = aDecoder.decodeObjectForKey("pastSegments") as? [ThymeSegment]
+        let currentSegment = aDecoder.decodeObjectForKey("currentSegment") as? ThymeSegment
+        self.init(name: name, pastSegments: pastSegments, currentSegment: currentSegment)
+    }
+
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeObject(self.pastSegments, forKey: "pastSegments")
+        aCoder.encodeObject(self.currentSegment, forKey: "currentSegment")
     }
 }
