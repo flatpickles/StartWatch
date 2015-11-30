@@ -9,7 +9,24 @@
 import UIKit
 
 class TimerListController: UITableViewController {
-    let timers: [ThymeTimer] = [ThymeTimer.debugTimer(), ThymeTimer.debugTimer(), ThymeTimer.debugTimer()]
+    var timers: [ThymeTimer] = [ThymeTimer.debugTimer(), ThymeTimer.debugTimer(), ThymeTimer.debugTimer()]
+
+    @IBAction func newTimer(sender: AnyObject) {
+        let newTimerController = UIAlertController(title: "New Timer", message: nil, preferredStyle: .Alert)
+        var textField: UITextField?
+        newTimerController.addTextFieldWithConfigurationHandler { (textFieldToConfigure: UITextField) -> Void in
+            textField = textFieldToConfigure
+        }
+        newTimerController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        newTimerController.addAction(UIAlertAction(title: "Create", style: .Default, handler: { [unowned self] (_) -> Void in
+            let newName = textField?.text ?? ""
+            let newTimer = ThymeTimer(name: newName.isEmpty ? "New Timer" : newName)
+
+            self.timers.insert(newTimer, atIndex: 0)
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Top)
+        }))
+        self.presentViewController(newTimerController, animated: true, completion: nil)
+    }
 
     // MARK: UIViewController
 

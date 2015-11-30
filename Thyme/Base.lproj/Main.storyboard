@@ -69,7 +69,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Thyme" id="lp1-rB-a7F">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PVB-aP-JgE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PVB-aP-JgE">
+                            <connections>
+                                <action selector="newTimer:" destination="WuY-3Q-lmE" id="0bF-Lv-y1r"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YkM-sI-n3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
