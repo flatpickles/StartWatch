@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:15:35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXD-Rj-IYA">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:15:35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OXD-Rj-IYA">
                     <rect key="frame" x="8" y="8" width="584" height="72"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>

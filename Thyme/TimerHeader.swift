@@ -20,7 +20,12 @@ class TimerHeader: UIView {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var cumulativeTimeButton: UIButton!
+    @IBOutlet weak var cumulativeTimeButton: UIButton! {
+        didSet {
+            self.cumulativeTimeButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            self.cumulativeTimeButton.titleLabel?.minimumScaleFactor = 0.5
+        }
+    }
 
     @IBAction func cumulativeTimeTapped(sender: AnyObject) {
         delegate?.headerShouldChangeCumulativeDisplay(self)
