@@ -76,7 +76,7 @@
                 <outlet property="startStopButton" destination="aC8-Jc-ncU" id="NVg-pc-pbN"/>
                 <outlet property="timerLabel" destination="OXD-Rj-IYA" id="bSk-RZ-yLO"/>
             </connections>
-            <point key="canvasLocation" x="405" y="101.5"/>
+            <point key="canvasLocation" x="275" y="115.5"/>
         </view>
     </objects>
 </document>

@@ -11,6 +11,8 @@ import UIKit
 class TimerListController: UITableViewController {
     var timers: [ThymeTimer] = [ThymeTimer.debugTimer(), ThymeTimer.debugTimer(), ThymeTimer.debugTimer()]
 
+    private var updateTimer: NSTimer?
+
     @IBAction func newTimer(sender: AnyObject) {
         let newTimerController = UIAlertController(title: "New Timer", message: nil, preferredStyle: .Alert)
         var textField: UITextField?
@@ -30,15 +32,26 @@ class TimerListController: UITableViewController {
 
     // MARK: UIViewController
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 100
-    }
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        if let row = self.tableView.indexPathForSelectedRow {
+            // Deselect on e.g. bezel swipe back
+            self.tableView.deselectRowAtIndexPath(row, animated: true)
+        }
+
         // To update the duration copy on the cells
-        self.tableView.reloadData()
+        self.updateVisibleCumulativeDisplays()
+
+        // Start/restart the timer
+        self.updateTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateVisibleCumulativeDisplays", userInfo: nil, repeats: true)
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.updateTimer?.invalidate()
+        self.updateTimer = nil
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -68,6 +81,10 @@ class TimerListController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        self.updateCumulativeDisplay(indexPath)
+    }
+
     // MARK: Helpers
 
     private func timerForIndexPath(indexPath: NSIndexPath?) -> ThymeTimer? {
@@ -75,6 +92,21 @@ class TimerListController: UITableViewController {
             return self.timers[path.row]
         } else {
             return nil
+        }
+    }
+
+    private func updateCumulativeDisplay(indexPath: NSIndexPath) {
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TimerListCell {
+            let timer = self.timerForIndexPath(indexPath)
+            cell.duration = timer?.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!)
+        }
+    }
+
+    func updateVisibleCumulativeDisplays() {
+        if let visiblePaths = self.tableView.indexPathsForVisibleRows {
+            for path in visiblePaths {
+                self.updateCumulativeDisplay(path)
+            }
         }
     }
 }
