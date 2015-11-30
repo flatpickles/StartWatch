@@ -12,11 +12,32 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     var timer: ThymeTimer? {
         didSet {
             self.title = timer?.name
-
-            // Reload to represent new timer
             self.tableView.reloadData()
+            self.updateNSTimerAndUI()
         }
     }
+
+    private var header: TimerHeader? {
+        didSet {
+            self.updateNSTimerAndUI()
+        }
+    }
+    private var updateTimer: NSTimer?
+
+    // MARK: UIViewController
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateNSTimerAndUI()
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.updateTimer?.invalidate()
+        self.updateTimer = nil
+    }
+
 
     // MARK: UITableViewController
 
@@ -35,20 +56,15 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let timer = self.timer else {
-            return nil
-        }
-
         if (section != 0) {
             return nil
         } else {
-            let header = NSBundle.mainBundle().loadNibNamed("TimerHeader", owner: self, options: nil)[0] as? TimerHeader
+            self.header = NSBundle.mainBundle().loadNibNamed("TimerHeader", owner: self, options: nil)[0] as? TimerHeader
 
-            header?.delegate = self
-            header?.timerLabel.text = (timer.currentSegmentDuration ?? NSTimeInterval(0)).toString()
-            header?.cumulativeTimeButton.setTitle(String(format: AllTimeCopyFormat, timer.totalDuration.toString()), forState: .Normal)
+            self.header?.delegate = self
+            self.updateHeader()
 
-            return header
+            return self.header
         }
     }
 
@@ -61,7 +77,11 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     // MARK: TimerHeaderDelegate
 
     func toggleHeaderState(header: TimerHeader) {
-        // TODO
+        if (self.timer?.state == .Started) {
+            self.stopTimer()
+        } else {
+            self.startTimer()
+        }
     }
 
     func headerShouldConfirm(header: TimerHeader) {
@@ -70,5 +90,60 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
 
     func headerShouldChangeCumulativeDisplay(header: TimerHeader) {
         // TODO
+    }
+
+    // MARK: Helpers
+
+    private func startTimer() {
+        if (self.timer?.currentSegment == nil) {
+            self.timer?.currentSegment = ThymeSegment()
+        }
+        self.timer?.currentSegment?.lastStarted = NSDate()
+
+        self.updateNSTimerAndUI()
+    }
+
+    private func stopTimer() {
+        self.timer?.currentSegment?.duration -= (self.timer?.currentSegment?.lastStarted ?? NSDate()).timeIntervalSinceNow
+        self.timer?.currentSegment?.lastStarted = nil
+
+        self.updateNSTimerAndUI()
+    }
+
+    private func updateNSTimerAndUI() {
+        UIView.setAnimationsEnabled(false)
+
+        self.updateTimer?.invalidate()
+        self.updateTimer = nil
+
+        if (self.timer?.state == .Started) {
+            // Start timer
+            self.updateTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateHeader", userInfo: nil, repeats: true)
+
+            // Update buttons
+            self.header?.confirmButton.enabled = false
+            self.header?.startStopButton.setTitle("Stop", forState: .Normal)
+        } else if (self.timer?.state == .Paused) {
+            self.header?.confirmButton.enabled = true
+            self.header?.startStopButton.setTitle("Continue", forState: .Normal)
+        } else {
+            self.header?.confirmButton.enabled = false
+            self.header?.startStopButton.setTitle("Start", forState: .Normal)
+        }
+
+        self.header?.startStopButton.layoutIfNeeded()
+        UIView.setAnimationsEnabled(true)
+    }
+
+    func updateHeader() {
+        guard let timer = self.timer else {
+            return
+        }
+
+        self.header?.timerLabel.text = (timer.currentSegmentDuration ?? NSTimeInterval(0)).toString()
+        UIView.setAnimationsEnabled(false)
+        self.header?.cumulativeTimeButton.setTitle(String(format: AllTimeCopyFormat, timer.totalDuration.toString()), forState: .Normal)
+        self.header?.cumulativeTimeButton.layoutIfNeeded()
+        UIView.setAnimationsEnabled(true)
     }
 }

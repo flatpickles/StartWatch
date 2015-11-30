@@ -18,7 +18,7 @@ class TimerHeader: UIView {
     weak var delegate: TimerHeaderDelegate?
 
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cumulativeTimeButton: UIButton!
 

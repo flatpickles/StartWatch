@@ -23,7 +23,7 @@ class TimerSegmentCell: UITableViewCell {
             let formatter = NSDateFormatter()
             formatter.dateStyle = NSDateFormatterStyle.MediumStyle
             formatter.timeStyle = NSDateFormatterStyle.NoStyle
-            self.dateLabel.text = formatter.stringFromDate(segment.start)
+            self.dateLabel.text = formatter.stringFromDate(segment.creationDate)
         }
     }
 

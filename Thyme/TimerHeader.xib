@@ -32,7 +32,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="256-dK-J7x">
                     <rect key="frame" x="8" y="116" width="584" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-aX-4B7">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-aX-4B7">
                             <rect key="frame" x="0.0" y="0.0" width="292" height="30"/>
                             <animations/>
                             <state key="normal" title="Confirm"/>
@@ -71,7 +71,7 @@
             <connections>
                 <outlet property="confirmButton" destination="qbh-aX-4B7" id="jxq-BE-0Jn"/>
                 <outlet property="cumulativeTimeButton" destination="gVd-MY-w7R" id="Tps-Lh-7Ct"/>
-                <outlet property="startButton" destination="aC8-Jc-ncU" id="STp-5i-pEj"/>
+                <outlet property="startStopButton" destination="aC8-Jc-ncU" id="NVg-pc-pbN"/>
                 <outlet property="timerLabel" destination="OXD-Rj-IYA" id="bSk-RZ-yLO"/>
             </connections>
             <point key="canvasLocation" x="405" y="101.5"/>

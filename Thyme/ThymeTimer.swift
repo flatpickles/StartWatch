@@ -8,16 +8,21 @@
 
 import Foundation
 
+enum ThymeState {
+    case Unstarted, Started, Paused
+}
+
 struct ThymeSegment {
-    let start: NSDate
-    var duration: NSTimeInterval? // if `nil`, segment is outstanding
+    let creationDate: NSDate
+    var lastStarted: NSDate? = nil // if `nil`, segment is paused
+    var duration: NSTimeInterval = 0
 
     init() {
-        self.start = NSDate()
+        self.creationDate = NSDate()
     }
 
-    init(start: NSDate, duration: NSTimeInterval) {
-        self.start = start
+    init(creationDate: NSDate, duration: NSTimeInterval) {
+        self.creationDate = creationDate
         self.duration = duration
     }
 }
@@ -29,7 +34,7 @@ class ThymeTimer {
 
     var currentSegmentDuration: NSTimeInterval? {
         if let currentSegment = self.currentSegment {
-            return currentSegment.duration ?? -currentSegment.start.timeIntervalSinceNow
+            return currentSegment.duration - (currentSegment.lastStarted?.timeIntervalSinceNow ?? 0)
         } else {
             return nil
         }
@@ -42,13 +47,23 @@ class ThymeTimer {
         return (self.currentSegmentDuration ?? 0) + (pastDuration ?? 0)
     }
 
+    var state: ThymeState {
+        if (self.currentSegment?.lastStarted != nil) {
+            return .Started
+        } else if (self.currentSegment != nil) {
+            return .Paused
+        } else {
+            return .Unstarted
+        }
+    }
+
     init(name: String) {
         self.name = name
     }
 
     class func debugTimer() -> ThymeTimer {
         let newTimer = ThymeTimer(name: "Debug Timer")
-        newTimer.pastSegments = [ThymeSegment(start: NSDate(timeIntervalSinceNow: -1000), duration: 100), ThymeSegment(start: NSDate(timeIntervalSinceNow: -2000), duration: 200), ThymeSegment(start: NSDate(timeIntervalSinceNow: -3000), duration: 100)]
+        newTimer.pastSegments = [ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -1000), duration: 100), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -2000), duration: 200), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -3000), duration: 100)]
         return newTimer
     }
 }
