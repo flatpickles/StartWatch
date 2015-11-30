@@ -1,0 +1,6 @@
+- Fix bug: noted in TimerListController
+- Delete timers
+- Delete segments
+- Rename timers
+- Polish UI
+- Rename

@@ -21,6 +21,7 @@
 		C9128C851C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C841C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift */; };
 		C9128C871C0BD47800F1D3E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C861C0BD47800F1D3E0 /* Constants.swift */; };
 		C9128C891C0C17DC00F1D3E0 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C881C0C17DC00F1D3E0 /* TimerStore.swift */; };
+		C9128C8B1C0C23F700F1D3E0 /* todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9128C8A1C0C23F700F1D3E0 /* todo.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C9128C841C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Thyme.swift"; sourceTree = "<group>"; };
 		C9128C861C0BD47800F1D3E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C9128C881C0C17DC00F1D3E0 /* TimerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
+		C9128C8A1C0C23F700F1D3E0 /* todo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		C9128C5F1C0BB15600F1D3E0 /* Thyme */ = {
 			isa = PBXGroup;
 			children = (
+				C9128C8A1C0C23F700F1D3E0 /* todo.txt */,
 				C9128C7D1C0BC3FD00F1D3E0 /* Model */,
 				C9128C781C0BB8FC00F1D3E0 /* Controllers */,
 				C9128C771C0BB61100F1D3E0 /* Views */,
@@ -185,6 +188,7 @@
 				C9128C6B1C0BB15700F1D3E0 /* LaunchScreen.storyboard in Resources */,
 				C9128C681C0BB15700F1D3E0 /* Assets.xcassets in Resources */,
 				C9128C661C0BB15600F1D3E0 /* Main.storyboard in Resources */,
+				C9128C8B1C0C23F700F1D3E0 /* todo.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
