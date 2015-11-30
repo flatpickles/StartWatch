@@ -22,7 +22,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TimerListCell" rowHeight="75" id="Smx-Kl-14R">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TimerListCell" rowHeight="75" id="Smx-Kl-14R" customClass="TimerListCell" customModule="Thyme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Smx-Kl-14R" id="2S6-UC-2NV">
@@ -57,7 +57,9 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="Cva-TE-UC1" kind="show" id="14t-4U-zSA"/>
+                                    <outlet property="timerDurationLabel" destination="qA9-ti-Z0H" id="9wt-25-ODm"/>
+                                    <outlet property="timerNameLabel" destination="aw8-Ct-tQg" id="BBO-mP-m5c"/>
+                                    <segue destination="Cva-TE-UC1" kind="show" identifier="PresentDetail" id="14t-4U-zSA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -9,9 +9,9 @@
 import UIKit
 
 protocol TimerHeaderDelegate: class {
-    func shouldChangeCumulativeDisplay()
-    func shouldToggleState()
-    func shouldConfirm()
+    func toggleHeaderState(header: TimerHeader)
+    func headerShouldChangeCumulativeDisplay(header: TimerHeader)
+    func headerShouldConfirm(header: TimerHeader)
 }
 
 class TimerHeader: UIView {
@@ -23,14 +23,14 @@ class TimerHeader: UIView {
     @IBOutlet weak var cumulativeTimeButton: UIButton!
 
     @IBAction func cumulativeTimeTapped(sender: AnyObject) {
-        delegate?.shouldChangeCumulativeDisplay()
+        delegate?.headerShouldChangeCumulativeDisplay(self)
     }
 
     @IBAction func confirmTapped(sender: AnyObject) {
-        delegate?.shouldConfirm()
+        delegate?.headerShouldConfirm(self)
     }
 
     @IBAction func startStopTapped(sender: AnyObject) {
-        delegate?.shouldToggleState()
+        delegate?.toggleHeaderState(self)
     }
 }
