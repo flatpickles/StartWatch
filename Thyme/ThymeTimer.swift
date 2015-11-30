@@ -61,6 +61,21 @@ class ThymeTimer {
         self.name = name
     }
 
+    func finalizeCurrentSegment() -> Bool {
+        guard var currentSegment = self.currentSegment else {
+            return false
+        }
+
+        currentSegment.duration -= (currentSegment.lastStarted ?? NSDate()).timeIntervalSinceNow
+        currentSegment.lastStarted = nil
+
+        self.pastSegments = self.pastSegments ?? []
+        self.pastSegments?.insert(currentSegment, atIndex: 0)
+        self.currentSegment = nil
+
+        return true
+    }
+
     class func debugTimer() -> ThymeTimer {
         let newTimer = ThymeTimer(name: "Debug Timer")
         newTimer.pastSegments = [ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -1000), duration: 100), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -2000), duration: 200), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -3000), duration: 100)]

@@ -85,7 +85,14 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     func headerShouldConfirm(header: TimerHeader) {
-        // TODO
+        let didFinalize = self.timer?.finalizeCurrentSegment() ?? false
+
+        self.updateNSTimerAndUI()
+        self.updateHeader()
+
+        if (didFinalize) {
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Top)
+        }
     }
 
     func headerShouldChangeCumulativeDisplay(header: TimerHeader) {
