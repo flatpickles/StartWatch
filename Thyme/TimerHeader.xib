@@ -18,7 +18,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-MY-w7R">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-MY-w7R">
                     <rect key="frame" x="8" y="80" width="584" height="36"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
@@ -35,6 +35,7 @@
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-aX-4B7">
                             <rect key="frame" x="0.0" y="0.0" width="292" height="30"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="Confirm"/>
                             <connections>
                                 <action selector="confirmTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="dJv-oW-KuJ"/>
@@ -43,6 +44,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-Jc-ncU">
                             <rect key="frame" x="292" y="0.0" width="292" height="30"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="Start"/>
                             <connections>
                                 <action selector="startStopTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="q6R-30-rn0"/>

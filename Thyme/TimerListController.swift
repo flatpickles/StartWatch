@@ -18,6 +18,12 @@ class TimerListController: UITableViewController {
         self.tableView.estimatedRowHeight = 100
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // To update the duration copy on the cells
+        self.tableView.reloadData()
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         if let controller = segue.destinationViewController as? TimerDetailController {
@@ -41,7 +47,7 @@ class TimerListController: UITableViewController {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("TimerListCell", forIndexPath: indexPath) as! TimerListCell
         let timer = self.timerForIndexPath(indexPath)
         cell.name = timer?.name
-        cell.duration = timer?.totalDuration
+        cell.duration = timer?.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!)
         return cell
     }
 

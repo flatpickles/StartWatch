@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     var timer: ThymeTimer? {
         didSet {
@@ -23,6 +25,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         }
     }
     private var updateTimer: NSTimer?
+    private var currentTimePassedIntervalIndex: Int = 0
 
     // MARK: UIViewController
 
@@ -96,7 +99,8 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     func headerShouldChangeCumulativeDisplay(header: TimerHeader) {
-        // TODO
+        PreferredTimePassedIntervalIndex = (PreferredTimePassedIntervalIndex + 1) % AllTimePassedOptions.count
+        self.updateHeader()
     }
 
     // MARK: Helpers
@@ -149,7 +153,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
 
         self.header?.timerLabel.text = (timer.currentSegmentDuration ?? NSTimeInterval(0)).toString()
         UIView.setAnimationsEnabled(false)
-        self.header?.cumulativeTimeButton.setTitle(String(format: AllTimeCopyFormat, timer.totalDuration.toString()), forState: .Normal)
+        self.header?.cumulativeTimeButton.setTitle(String(format: TimePassedCopyFormats[PreferredTimePassedInterval]!, timer.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!).toString()), forState: .Normal)
         self.header?.cumulativeTimeButton.layoutIfNeeded()
         UIView.setAnimationsEnabled(true)
     }
