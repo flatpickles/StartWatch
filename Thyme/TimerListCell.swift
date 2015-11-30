@@ -21,7 +21,7 @@ class TimerListCell: UITableViewCell {
     var duration: NSTimeInterval? {
         didSet {
             let durationOrZero = duration ?? NSTimeInterval(0)
-            self.timerDurationLabel.text = "\(durationOrZero.toString()) all time"
+            self.timerDurationLabel.text = String(format: AllTimeCopyFormat, durationOrZero.toString())
         }
     }
 

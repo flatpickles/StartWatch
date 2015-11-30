@@ -29,8 +29,9 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // TODO configure segment cell
-        return self.tableView.dequeueReusableCellWithIdentifier("SegmentCell", forIndexPath: indexPath)
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("SegmentCell", forIndexPath: indexPath) as! TimerSegmentCell
+        cell.segment = self.timer?.pastSegments?[indexPath.row]
+        return cell
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -42,9 +43,10 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
             return nil
         } else {
             let header = NSBundle.mainBundle().loadNibNamed("TimerHeader", owner: self, options: nil)[0] as? TimerHeader
-            header?.delegate = self
 
-            // TODO: configure using timer
+            header?.delegate = self
+            header?.timerLabel.text = (timer.currentSegmentDuration ?? NSTimeInterval(0)).toString()
+            header?.cumulativeTimeButton.setTitle(String(format: AllTimeCopyFormat, timer.totalDuration.toString()), forState: .Normal)
 
             return header
         }

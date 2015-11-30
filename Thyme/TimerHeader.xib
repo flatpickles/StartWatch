@@ -14,13 +14,14 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:15:35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXD-Rj-IYA">
                     <rect key="frame" x="8" y="8" width="584" height="72"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-MY-w7R">
-                    <rect key="frame" x="8" y="80" width="584" height="30"/>
+                    <rect key="frame" x="8" y="80" width="584" height="36"/>
                     <animations/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                     <state key="normal" title="8:56:24 all time">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -29,10 +30,10 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="256-dK-J7x">
-                    <rect key="frame" x="8" y="110" width="584" height="36"/>
+                    <rect key="frame" x="8" y="116" width="584" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-aX-4B7">
-                            <rect key="frame" x="0.0" y="0.0" width="292" height="36"/>
+                            <rect key="frame" x="0.0" y="0.0" width="292" height="30"/>
                             <animations/>
                             <state key="normal" title="Confirm"/>
                             <connections>
@@ -40,7 +41,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-Jc-ncU">
-                            <rect key="frame" x="292" y="0.0" width="292" height="36"/>
+                            <rect key="frame" x="292" y="0.0" width="292" height="30"/>
                             <animations/>
                             <state key="normal" title="Start"/>
                             <connections>

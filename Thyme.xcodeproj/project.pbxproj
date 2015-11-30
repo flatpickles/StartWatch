@@ -19,6 +19,7 @@
 		C9128C811C0BCA2400F1D3E0 /* TimerSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C801C0BCA2400F1D3E0 /* TimerSegmentCell.swift */; };
 		C9128C831C0BCAB300F1D3E0 /* TimerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C821C0BCAB300F1D3E0 /* TimerListCell.swift */; };
 		C9128C851C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C841C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift */; };
+		C9128C871C0BD47800F1D3E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C861C0BD47800F1D3E0 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C9128C801C0BCA2400F1D3E0 /* TimerSegmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSegmentCell.swift; sourceTree = "<group>"; };
 		C9128C821C0BCAB300F1D3E0 /* TimerListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerListCell.swift; sourceTree = "<group>"; };
 		C9128C841C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Thyme.swift"; sourceTree = "<group>"; };
+		C9128C861C0BD47800F1D3E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				C9128C771C0BB61100F1D3E0 /* Views */,
 				C9128C741C0BB5E800F1D3E0 /* Interfaces */,
 				C9128C601C0BB15600F1D3E0 /* AppDelegate.swift */,
+				C9128C861C0BD47800F1D3E0 /* Constants.swift */,
 				C9128C671C0BB15700F1D3E0 /* Assets.xcassets */,
 				C9128C6C1C0BB15700F1D3E0 /* Info.plist */,
 			);
@@ -197,6 +200,7 @@
 				C9128C7F1C0BC40E00F1D3E0 /* ThymeTimer.swift in Sources */,
 				C9128C7A1C0BB91A00F1D3E0 /* TimerListController.swift in Sources */,
 				C9128C811C0BCA2400F1D3E0 /* TimerSegmentCell.swift in Sources */,
+				C9128C871C0BD47800F1D3E0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

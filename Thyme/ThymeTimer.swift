@@ -48,7 +48,6 @@ class ThymeTimer {
 
     class func debugTimer() -> ThymeTimer {
         let newTimer = ThymeTimer(name: "Debug Timer")
-        newTimer.currentSegment = ThymeSegment()
         newTimer.pastSegments = [ThymeSegment(start: NSDate(timeIntervalSinceNow: -1000), duration: 100), ThymeSegment(start: NSDate(timeIntervalSinceNow: -2000), duration: 200), ThymeSegment(start: NSDate(timeIntervalSinceNow: -3000), duration: 100)]
         return newTimer
     }

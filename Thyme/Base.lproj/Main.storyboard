@@ -92,7 +92,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="SegmentCell" rowHeight="65" id="w3u-82-sQo">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="SegmentCell" rowHeight="65" id="w3u-82-sQo" customClass="TimerSegmentCell" customModule="Thyme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w3u-82-sQo" id="zox-qX-N9J">
@@ -130,6 +130,10 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" red="0.96169664240416197" green="0.96169664240416197" blue="0.96169664240416197" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="Ulb-ST-cfX" id="On1-6h-ocf"/>
+                                    <outlet property="durationLabel" destination="zXy-5O-GF1" id="syW-IV-KRL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
