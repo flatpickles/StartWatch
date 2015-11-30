@@ -20,6 +20,7 @@
 		C9128C831C0BCAB300F1D3E0 /* TimerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C821C0BCAB300F1D3E0 /* TimerListCell.swift */; };
 		C9128C851C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C841C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift */; };
 		C9128C871C0BD47800F1D3E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C861C0BD47800F1D3E0 /* Constants.swift */; };
+		C9128C891C0C17DC00F1D3E0 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9128C881C0C17DC00F1D3E0 /* TimerStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C9128C821C0BCAB300F1D3E0 /* TimerListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerListCell.swift; sourceTree = "<group>"; };
 		C9128C841C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Thyme.swift"; sourceTree = "<group>"; };
 		C9128C861C0BD47800F1D3E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C9128C881C0C17DC00F1D3E0 /* TimerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				C9128C861C0BD47800F1D3E0 /* Constants.swift */,
 				C9128C7E1C0BC40E00F1D3E0 /* ThymeTimer.swift */,
 				C9128C841C0BD02200F1D3E0 /* NSTimeInterval+Thyme.swift */,
+				C9128C881C0C17DC00F1D3E0 /* TimerStore.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				C9128C7A1C0BB91A00F1D3E0 /* TimerListController.swift in Sources */,
 				C9128C811C0BCA2400F1D3E0 /* TimerSegmentCell.swift in Sources */,
 				C9128C871C0BD47800F1D3E0 /* Constants.swift in Sources */,
+				C9128C891C0C17DC00F1D3E0 /* TimerStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

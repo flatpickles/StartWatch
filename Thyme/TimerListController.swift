@@ -9,8 +9,6 @@
 import UIKit
 
 class TimerListController: UITableViewController {
-    var timers: [ThymeTimer] = [ThymeTimer.debugTimer(), ThymeTimer.debugTimer(), ThymeTimer.debugTimer()]
-
     private var updateTimer: NSTimer?
 
     @IBAction func newTimer(sender: AnyObject) {
@@ -24,8 +22,11 @@ class TimerListController: UITableViewController {
             let newName = textField?.text ?? ""
             let newTimer = ThymeTimer(name: newName.isEmpty ? "New Timer" : newName)
 
-            self.timers.insert(newTimer, atIndex: 0)
+            TimerStore.storedTimers.insert(newTimer, atIndex: 0)
+            TimerStore.saveTimers()
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Top)
+
+            // TODO: bug – inserting sets the previous 0th row's duration to 00:00:00. Why??
         }))
         self.presentViewController(newTimerController, animated: true, completion: nil)
     }
@@ -70,7 +71,7 @@ class TimerListController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timers.count
+        return TimerStore.storedTimers.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -89,7 +90,7 @@ class TimerListController: UITableViewController {
 
     private func timerForIndexPath(indexPath: NSIndexPath?) -> ThymeTimer? {
         if let path = indexPath {
-            return self.timers[path.row]
+            return TimerStore.storedTimers[path.row]
         } else {
             return nil
         }

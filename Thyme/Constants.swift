@@ -19,7 +19,7 @@ let TimePassedCopyFormats: [TimePassed : String] = [
     .Year : "%@ in the past year",
     .Month : "%@ in the past month",
     .Week : "%@ in the past week",
-    .Day : "%@ in the past 24 hours"
+    .Day : "%@ in the past day"
 ]
 
 let TimePassedIntervals: [TimePassed : NSTimeInterval] = [

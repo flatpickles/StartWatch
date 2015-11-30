@@ -89,6 +89,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
 
     func headerShouldConfirm(header: TimerHeader) {
         let didFinalize = self.timer?.finalizeCurrentSegment() ?? false
+        TimerStore.saveTimers()
 
         self.updateNSTimerAndUI()
         self.updateHeader()
@@ -112,6 +113,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         self.timer?.currentSegment?.lastStarted = NSDate()
 
         self.updateNSTimerAndUI()
+        TimerStore.saveTimers()
     }
 
     private func stopTimer() {
@@ -123,6 +125,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         }
 
         self.updateNSTimerAndUI()
+        TimerStore.saveTimers()
     }
 
     private func updateNSTimerAndUI() {
