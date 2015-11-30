@@ -67,7 +67,7 @@ class ThymeTimer {
             return false
         }
 
-        currentSegment.duration -= (currentSegment.lastStarted ?? NSDate()).timeIntervalSinceNow
+        currentSegment.duration -= ceil((currentSegment.lastStarted ?? NSDate()).timeIntervalSinceNow)
         currentSegment.lastStarted = nil
 
         self.pastSegments = self.pastSegments ?? []

@@ -115,8 +115,12 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     private func stopTimer() {
-        self.timer?.currentSegment?.duration -= (self.timer?.currentSegment?.lastStarted ?? NSDate()).timeIntervalSinceNow
+        self.timer?.currentSegment?.duration -= ceil((self.timer?.currentSegment?.lastStarted ?? NSDate()).timeIntervalSinceNow)
         self.timer?.currentSegment?.lastStarted = nil
+
+        if (self.timer?.currentSegment?.duration == 0) {
+            self.timer?.currentSegment = nil
+        }
 
         self.updateNSTimerAndUI()
     }

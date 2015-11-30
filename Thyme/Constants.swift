@@ -31,7 +31,7 @@ let TimePassedIntervals: [TimePassed : NSTimeInterval] = [
 ]
 
 // MARK: Preferred time passed stuff
-// This is quick and dirty but it's probably fine
+// This is quick and dirty but it's probably fine. TODO: maybe clean this up.
 
 let PreferredTimePassedIntervalKey = "PreferredTimePassedIntervalKey"
 let AllTimePassedOptions: [TimePassed] = [.Epoch, .Year, .Month, .Week, .Day]
