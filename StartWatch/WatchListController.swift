@@ -1,5 +1,5 @@
 //
-//  TimerListController.swift
+//  WatchListController.swift
 //  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class TimerListController: UITableViewController {
+class WatchListController: UITableViewController {
     private var updateTimer: NSTimer?
 
     @IBAction func newTimer(sender: AnyObject) {
-        let newTimerController = UIAlertController(title: "New Watch", message: nil, preferredStyle: .Alert)
+        let newWatchController = UIAlertController(title: "New Watch", message: nil, preferredStyle: .Alert)
         var textField: UITextField?
-        newTimerController.addTextFieldWithConfigurationHandler { (textFieldToConfigure: UITextField) -> Void in
+        newWatchController.addTextFieldWithConfigurationHandler { (textFieldToConfigure: UITextField) -> Void in
             textField = textFieldToConfigure
         }
-        newTimerController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        newTimerController.addAction(UIAlertAction(title: "Create", style: .Default, handler: { [unowned self] (_) -> Void in
+        newWatchController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        newWatchController.addAction(UIAlertAction(title: "Create", style: .Default, handler: { [unowned self] (_) -> Void in
             let newName = textField?.text ?? ""
             let newTimer = StartWatch(name: newName.isEmpty ? "New Watch" : newName)
 
@@ -28,7 +28,7 @@ class TimerListController: UITableViewController {
 
             // TODO: bug – inserting sets the previous 0th row's duration to 00:00:00. Why??
         }))
-        self.presentViewController(newTimerController, animated: true, completion: nil)
+        self.presentViewController(newWatchController, animated: true, completion: nil)
     }
 
     // MARK: UIViewController
@@ -57,9 +57,9 @@ class TimerListController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        if let controller = segue.destinationViewController as? TimerDetailController {
-            if let timer = self.timerForIndexPath(self.tableView.indexPathForSelectedRow) {
-                controller.timer = timer
+        if let controller = segue.destinationViewController as? WatchDetailController {
+            if let watch = self.watchForIndexPath(self.tableView.indexPathForSelectedRow) {
+                controller.watch = watch
             }
         }
     }
@@ -75,10 +75,10 @@ class TimerListController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("TimerListCell", forIndexPath: indexPath) as! TimerListCell
-        let timer = self.timerForIndexPath(indexPath)
-        cell.name = timer?.name
-        cell.duration = timer?.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!)
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("WatchListCell", forIndexPath: indexPath) as! WatchListCell
+        let watch = self.watchForIndexPath(indexPath)
+        cell.name = watch?.name
+        cell.duration = watch?.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!)
         return cell
     }
 
@@ -88,7 +88,7 @@ class TimerListController: UITableViewController {
 
     // MARK: Helpers
 
-    private func timerForIndexPath(indexPath: NSIndexPath?) -> StartWatch? {
+    private func watchForIndexPath(indexPath: NSIndexPath?) -> StartWatch? {
         if let path = indexPath {
             return StartWatchStore.storedWatches[path.row]
         } else {
@@ -97,9 +97,9 @@ class TimerListController: UITableViewController {
     }
 
     private func updateCumulativeDisplay(indexPath: NSIndexPath) {
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TimerListCell {
-            let timer = self.timerForIndexPath(indexPath)
-            cell.duration = timer?.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? WatchListCell {
+            let watch = self.watchForIndexPath(indexPath)
+            cell.duration = watch?.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!)
         }
     }
 

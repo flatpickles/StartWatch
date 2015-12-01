@@ -1,5 +1,5 @@
 //
-//  TimerDetailController.swift
+//  WatchDetailController.swift
 //  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
@@ -8,18 +8,16 @@
 
 import UIKit
 
-
-
-class TimerDetailController: UITableViewController, TimerHeaderDelegate {
-    var timer: StartWatch? {
+class WatchDetailController: UITableViewController, WatchHeaderDelegate {
+    var watch: StartWatch? {
         didSet {
-            self.title = timer?.name
+            self.title = watch?.name
             self.tableView.reloadData()
             self.updateNSTimerAndUI()
         }
     }
 
-    private var header: TimerHeader? {
+    private var header: WatchHeader? {
         didSet {
             self.updateNSTimerAndUI()
         }
@@ -49,12 +47,12 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.timer?.pastSegments?.count ?? 0
+        return self.watch?.pastSegments?.count ?? 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("SegmentCell", forIndexPath: indexPath) as! TimerSegmentCell
-        cell.segment = self.timer?.pastSegments?[indexPath.row]
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("SegmentCell", forIndexPath: indexPath) as! WatchSegmentCell
+        cell.segment = self.watch?.pastSegments?[indexPath.row]
         return cell
     }
 
@@ -62,7 +60,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         if (section != 0) {
             return nil
         } else {
-            self.header = NSBundle.mainBundle().loadNibNamed("TimerHeader", owner: self, options: nil)[0] as? TimerHeader
+            self.header = NSBundle.mainBundle().loadNibNamed("WatchHeader", owner: self, options: nil)[0] as? WatchHeader
 
             self.header?.delegate = self
             self.updateHeader()
@@ -72,23 +70,23 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let dummyView = NSBundle.mainBundle().loadNibNamed("TimerHeader", owner: self, options: nil)[0] as! UIView
+        let dummyView = NSBundle.mainBundle().loadNibNamed("WatchHeader", owner: self, options: nil)[0] as! UIView
         dummyView.sizeToFit()
         return dummyView.frame.height
     }
 
     // MARK: TimerHeaderDelegate
 
-    func toggleHeaderState(header: TimerHeader) {
-        if (self.timer?.state == .Started) {
-            self.stopTimer()
+    func toggleHeaderState(header: WatchHeader) {
+        if (self.watch?.state == .Started) {
+            self.stopWatch()
         } else {
-            self.startTimer()
+            self.startWatch()
         }
     }
 
-    func headerShouldConfirm(header: TimerHeader) {
-        let didFinalize = self.timer?.finalizeCurrentSegment() ?? false
+    func headerShouldConfirm(header: WatchHeader) {
+        let didFinalize = self.watch?.finalizeCurrentSegment() ?? false
         StartWatchStore.saveWatches()
 
         self.updateNSTimerAndUI()
@@ -99,29 +97,29 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         }
     }
 
-    func headerShouldChangeCumulativeDisplay(header: TimerHeader) {
+    func headerShouldChangeCumulativeDisplay(header: WatchHeader) {
         PreferredTimePassedIntervalIndex = (PreferredTimePassedIntervalIndex + 1) % AllTimePassedOptions.count
         self.updateHeader()
     }
 
     // MARK: Helpers
 
-    private func startTimer() {
-        if (self.timer?.currentSegment == nil) {
-            self.timer?.currentSegment = StartWatchSegment()
+    private func startWatch() {
+        if (self.watch?.currentSegment == nil) {
+            self.watch?.currentSegment = StartWatchSegment()
         }
-        self.timer?.currentSegment?.lastStarted = NSDate()
+        self.watch?.currentSegment?.lastStarted = NSDate()
 
         self.updateNSTimerAndUI()
         StartWatchStore.saveWatches()
     }
 
-    private func stopTimer() {
-        self.timer?.currentSegment?.duration -= ceil((self.timer?.currentSegment?.lastStarted ?? NSDate()).timeIntervalSinceNow)
-        self.timer?.currentSegment?.lastStarted = nil
+    private func stopWatch() {
+        self.watch?.currentSegment?.duration -= ceil((self.watch?.currentSegment?.lastStarted ?? NSDate()).timeIntervalSinceNow)
+        self.watch?.currentSegment?.lastStarted = nil
 
-        if (self.timer?.currentSegment?.duration == 0) {
-            self.timer?.currentSegment = nil
+        if (self.watch?.currentSegment?.duration == 0) {
+            self.watch?.currentSegment = nil
         }
 
         self.updateNSTimerAndUI()
@@ -134,14 +132,14 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         self.updateTimer?.invalidate()
         self.updateTimer = nil
 
-        if (self.timer?.state == .Started) {
+        if (self.watch?.state == .Started) {
             // Start timer
             self.updateTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateHeader", userInfo: nil, repeats: true)
 
             // Update buttons
             self.header?.confirmButton.enabled = false
             self.header?.startStopButton.setTitle("Stop", forState: .Normal)
-        } else if (self.timer?.state == .Paused) {
+        } else if (self.watch?.state == .Paused) {
             self.header?.confirmButton.enabled = true
             self.header?.startStopButton.setTitle("Continue", forState: .Normal)
         } else {
@@ -154,13 +152,13 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
     }
 
     func updateHeader() {
-        guard let timer = self.timer else {
+        guard let watch = self.watch else {
             return
         }
 
-        self.header?.timerLabel.text = (timer.currentSegmentDuration ?? NSTimeInterval(0)).toString()
+        self.header?.watchLabel.text = (watch.currentSegmentDuration ?? NSTimeInterval(0)).toString()
         UIView.setAnimationsEnabled(false)
-        self.header?.cumulativeTimeButton.setTitle(String(format: TimePassedCopyFormats[PreferredTimePassedInterval]!, timer.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!).toString()), forState: .Normal)
+        self.header?.cumulativeTimeButton.setTitle(String(format: TimePassedCopyFormats[PreferredTimePassedInterval]!, watch.durationWithin(TimePassedIntervals[PreferredTimePassedInterval]!).toString()), forState: .Normal)
         self.header?.cumulativeTimeButton.layoutIfNeeded()
         UIView.setAnimationsEnabled(true)
     }

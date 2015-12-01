@@ -1,5 +1,5 @@
 //
-//  TimerHeader.swift
+//  WatchHeader.swift
 //  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol TimerHeaderDelegate: class {
-    func toggleHeaderState(header: TimerHeader)
-    func headerShouldChangeCumulativeDisplay(header: TimerHeader)
-    func headerShouldConfirm(header: TimerHeader)
+protocol WatchHeaderDelegate: class {
+    func toggleHeaderState(header: WatchHeader)
+    func headerShouldChangeCumulativeDisplay(header: WatchHeader)
+    func headerShouldConfirm(header: WatchHeader)
 }
 
-class TimerHeader: UIView {
-    weak var delegate: TimerHeaderDelegate?
+class WatchHeader: UIView {
+    weak var delegate: WatchHeaderDelegate?
 
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var watchLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cumulativeTimeButton: UIButton! {

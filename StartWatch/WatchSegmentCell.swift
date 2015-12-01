@@ -1,5 +1,5 @@
 //
-//  TimerSegmentCell.swift
+//  WatchSegmentCell.swift
 //  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimerSegmentCell: UITableViewCell {
+class WatchSegmentCell: UITableViewCell {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
 

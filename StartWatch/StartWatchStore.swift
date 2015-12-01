@@ -1,5 +1,5 @@
 //
-//  TimerStore.swift
+//  StartWatchStore.swift
 //  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.

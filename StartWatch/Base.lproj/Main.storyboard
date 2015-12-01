@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--StartWatch-->
+        <!--Watches-->
         <scene sceneID="BZT-Pn-GGM">
             <objects>
-                <tableViewController title="StartWatch" id="WuY-3Q-lmE" customClass="TimerListController" customModule="StartWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Watches" id="WuY-3Q-lmE" customClass="WatchListController" customModule="StartWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="5VL-tU-c3W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TimerListCell" rowHeight="75" id="Smx-Kl-14R" customClass="TimerListCell" customModule="StartWatch" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WatchListCell" rowHeight="75" id="Smx-Kl-14R" userLabel="WatchListCell" customClass="WatchListCell" customModule="StartWatch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Smx-Kl-14R" id="2S6-UC-2NV">
@@ -57,8 +57,8 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="timerDurationLabel" destination="qA9-ti-Z0H" id="9wt-25-ODm"/>
-                                    <outlet property="timerNameLabel" destination="aw8-Ct-tQg" id="BBO-mP-m5c"/>
+                                    <outlet property="watchDurationLabel" destination="qA9-ti-Z0H" id="nsp-Mf-JNY"/>
+                                    <outlet property="watchNameLabel" destination="aw8-Ct-tQg" id="kc8-Se-UPp"/>
                                     <segue destination="Cva-TE-UC1" kind="show" identifier="PresentDetail" id="14t-4U-zSA"/>
                                 </connections>
                             </tableViewCell>
@@ -68,7 +68,7 @@
                             <outlet property="delegate" destination="WuY-3Q-lmE" id="z85-ek-1TH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="StartWatch" id="lp1-rB-a7F">
+                    <navigationItem key="navigationItem" title="Watches" id="lp1-rB-a7F">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PVB-aP-JgE">
                             <connections>
                                 <action selector="newTimer:" destination="WuY-3Q-lmE" id="0bF-Lv-y1r"/>
@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="692" y="-80"/>
         </scene>
-        <!--Timer Detail Controller-->
+        <!--Watch Detail Controller-->
         <scene sceneID="opr-7w-2WG">
             <objects>
-                <tableViewController id="Cva-TE-UC1" customClass="TimerDetailController" customModule="StartWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Cva-TE-UC1" customClass="WatchDetailController" customModule="StartWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="LC3-3r-eVZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,7 +96,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCell" rowHeight="65" id="w3u-82-sQo" customClass="TimerSegmentCell" customModule="StartWatch" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCell" rowHeight="65" id="w3u-82-sQo" customClass="WatchSegmentCell" customModule="StartWatch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w3u-82-sQo" id="zox-qX-N9J">
