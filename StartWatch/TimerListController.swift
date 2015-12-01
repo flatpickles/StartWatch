@@ -12,7 +12,7 @@ class TimerListController: UITableViewController {
     private var updateTimer: NSTimer?
 
     @IBAction func newTimer(sender: AnyObject) {
-        let newTimerController = UIAlertController(title: "New Timer", message: nil, preferredStyle: .Alert)
+        let newTimerController = UIAlertController(title: "New Watch", message: nil, preferredStyle: .Alert)
         var textField: UITextField?
         newTimerController.addTextFieldWithConfigurationHandler { (textFieldToConfigure: UITextField) -> Void in
             textField = textFieldToConfigure
@@ -20,10 +20,10 @@ class TimerListController: UITableViewController {
         newTimerController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         newTimerController.addAction(UIAlertAction(title: "Create", style: .Default, handler: { [unowned self] (_) -> Void in
             let newName = textField?.text ?? ""
-            let newTimer = StartWatchTimer(name: newName.isEmpty ? "New Timer" : newName)
+            let newTimer = StartWatch(name: newName.isEmpty ? "New Watch" : newName)
 
-            TimerStore.storedTimers.insert(newTimer, atIndex: 0)
-            TimerStore.saveTimers()
+            StartWatchStore.storedWatches.insert(newTimer, atIndex: 0)
+            StartWatchStore.saveWatches()
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Top)
 
             // TODO: bug – inserting sets the previous 0th row's duration to 00:00:00. Why??
@@ -71,7 +71,7 @@ class TimerListController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TimerStore.storedTimers.count
+        return StartWatchStore.storedWatches.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -88,9 +88,9 @@ class TimerListController: UITableViewController {
 
     // MARK: Helpers
 
-    private func timerForIndexPath(indexPath: NSIndexPath?) -> StartWatchTimer? {
+    private func timerForIndexPath(indexPath: NSIndexPath?) -> StartWatch? {
         if let path = indexPath {
-            return TimerStore.storedTimers[path.row]
+            return StartWatchStore.storedWatches[path.row]
         } else {
             return nil
         }

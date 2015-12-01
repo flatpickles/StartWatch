@@ -1,5 +1,5 @@
 //
-//  StartWatchTimer.swift
+//  StartWatch.swift
 //  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
@@ -48,7 +48,7 @@ class StartWatchSegment : NSObject, NSCoding {
     }
 }
 
-class StartWatchTimer : NSObject, NSCoding {
+class StartWatch : NSObject, NSCoding {
     var name: String
     var pastSegments: [StartWatchSegment]?
     var currentSegment: StartWatchSegment?
@@ -106,8 +106,8 @@ class StartWatchTimer : NSObject, NSCoding {
         return true
     }
 
-    class func debugTimer() -> StartWatchTimer {
-        let newTimer = StartWatchTimer(name: "Debug Timer")
+    class func debugTimer() -> StartWatch {
+        let newTimer = StartWatch(name: "Debug Timer")
         newTimer.pastSegments = [StartWatchSegment(creationDate: NSDate(timeIntervalSinceNow: -1000000), duration: 100, lastStarted: nil), StartWatchSegment(creationDate: NSDate(timeIntervalSinceNow: -20000000), duration: 200, lastStarted: nil), StartWatchSegment(creationDate: NSDate(timeIntervalSinceNow: -30000000), duration: 100, lastStarted: nil)]
         return newTimer
     }

@@ -3,4 +3,3 @@
 - Delete segments
 - Rename timers
 - Polish UI
-- Rename

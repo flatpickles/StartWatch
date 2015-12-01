@@ -11,7 +11,7 @@ import UIKit
 
 
 class TimerDetailController: UITableViewController, TimerHeaderDelegate {
-    var timer: StartWatchTimer? {
+    var timer: StartWatch? {
         didSet {
             self.title = timer?.name
             self.tableView.reloadData()
@@ -89,7 +89,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
 
     func headerShouldConfirm(header: TimerHeader) {
         let didFinalize = self.timer?.finalizeCurrentSegment() ?? false
-        TimerStore.saveTimers()
+        StartWatchStore.saveWatches()
 
         self.updateNSTimerAndUI()
         self.updateHeader()
@@ -113,7 +113,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         self.timer?.currentSegment?.lastStarted = NSDate()
 
         self.updateNSTimerAndUI()
-        TimerStore.saveTimers()
+        StartWatchStore.saveWatches()
     }
 
     private func stopTimer() {
@@ -125,7 +125,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
         }
 
         self.updateNSTimerAndUI()
-        TimerStore.saveTimers()
+        StartWatchStore.saveWatches()
     }
 
     private func updateNSTimerAndUI() {

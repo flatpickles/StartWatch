@@ -8,19 +8,19 @@
 
 import Foundation
 
-class TimerStore {
-    static var storedTimers: [StartWatchTimer] = {
+class StartWatchStore {
+    static var storedWatches: [StartWatch] = {
         // Initialize with stored timers
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(filename) as? [StartWatchTimer] ?? []
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(filename) as? [StartWatch] ?? []
     }()
 
-    static func saveTimers() {
+    static func saveWatches() {
         // Save current storedTimers. Should be called whenever this is mutuated.
-        NSKeyedArchiver.archiveRootObject(storedTimers, toFile: filename)
+        NSKeyedArchiver.archiveRootObject(storedWatches, toFile: filename)
     }
 }
 
-private let filename = getDocumentsDirectory() + "/timers"
+private let filename = getDocumentsDirectory() + "/watches"
 private func getDocumentsDirectory() -> String {
     let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
     let documentsDirectory = paths[0]
