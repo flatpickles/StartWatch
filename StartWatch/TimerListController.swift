@@ -1,6 +1,6 @@
 //
 //  TimerListController.swift
-//  Thyme
+//  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
 //  Copyright © 2015 Matt Nichols. All rights reserved.
@@ -20,7 +20,7 @@ class TimerListController: UITableViewController {
         newTimerController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         newTimerController.addAction(UIAlertAction(title: "Create", style: .Default, handler: { [unowned self] (_) -> Void in
             let newName = textField?.text ?? ""
-            let newTimer = ThymeTimer(name: newName.isEmpty ? "New Timer" : newName)
+            let newTimer = StartWatchTimer(name: newName.isEmpty ? "New Timer" : newName)
 
             TimerStore.storedTimers.insert(newTimer, atIndex: 0)
             TimerStore.saveTimers()
@@ -88,7 +88,7 @@ class TimerListController: UITableViewController {
 
     // MARK: Helpers
 
-    private func timerForIndexPath(indexPath: NSIndexPath?) -> ThymeTimer? {
+    private func timerForIndexPath(indexPath: NSIndexPath?) -> StartWatchTimer? {
         if let path = indexPath {
             return TimerStore.storedTimers[path.row]
         } else {

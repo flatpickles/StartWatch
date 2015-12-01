@@ -1,6 +1,6 @@
 //
 //  TimerDetailController.swift
-//  Thyme
+//  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
 //  Copyright © 2015 Matt Nichols. All rights reserved.
@@ -11,7 +11,7 @@ import UIKit
 
 
 class TimerDetailController: UITableViewController, TimerHeaderDelegate {
-    var timer: ThymeTimer? {
+    var timer: StartWatchTimer? {
         didSet {
             self.title = timer?.name
             self.tableView.reloadData()
@@ -108,7 +108,7 @@ class TimerDetailController: UITableViewController, TimerHeaderDelegate {
 
     private func startTimer() {
         if (self.timer?.currentSegment == nil) {
-            self.timer?.currentSegment = ThymeSegment()
+            self.timer?.currentSegment = StartWatchSegment()
         }
         self.timer?.currentSegment?.lastStarted = NSDate()
 

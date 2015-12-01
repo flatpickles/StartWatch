@@ -1,6 +1,6 @@
 //
 //  TimerSegmentCell.swift
-//  Thyme
+//  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
 //  Copyright © 2015 Matt Nichols. All rights reserved.
@@ -12,7 +12,7 @@ class TimerSegmentCell: UITableViewCell {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
 
-    var segment: ThymeSegment? {
+    var segment: StartWatchSegment? {
         didSet {
             guard let segment = self.segment else {
                 return

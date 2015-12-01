@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Thyme-->
+        <!--StartWatch-->
         <scene sceneID="BZT-Pn-GGM">
             <objects>
-                <tableViewController title="Thyme" id="WuY-3Q-lmE" customClass="TimerListController" customModule="StartWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="StartWatch" id="WuY-3Q-lmE" customClass="TimerListController" customModule="StartWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="5VL-tU-c3W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                             <outlet property="delegate" destination="WuY-3Q-lmE" id="z85-ek-1TH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Thyme" id="lp1-rB-a7F">
+                    <navigationItem key="navigationItem" title="StartWatch" id="lp1-rB-a7F">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PVB-aP-JgE">
                             <connections>
                                 <action selector="newTimer:" destination="WuY-3Q-lmE" id="0bF-Lv-y1r"/>

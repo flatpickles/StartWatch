@@ -1,6 +1,6 @@
 //
-//  ThymeTimer.swift
-//  Thyme
+//  StartWatchTimer.swift
+//  StartWatch
 //
 //  Created by Matt Nichols on 11/29/15.
 //  Copyright © 2015 Matt Nichols. All rights reserved.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum ThymeState {
+enum StartWatchState {
     case Unstarted, Started, Paused
 }
 
-class ThymeSegment : NSObject, NSCoding {
+class StartWatchSegment : NSObject, NSCoding {
     let creationDate: NSDate
     var lastStarted: NSDate? = nil // if `nil`, segment is paused
     var duration: NSTimeInterval = 0
@@ -48,10 +48,10 @@ class ThymeSegment : NSObject, NSCoding {
     }
 }
 
-class ThymeTimer : NSObject, NSCoding {
+class StartWatchTimer : NSObject, NSCoding {
     var name: String
-    var pastSegments: [ThymeSegment]?
-    var currentSegment: ThymeSegment?
+    var pastSegments: [StartWatchSegment]?
+    var currentSegment: StartWatchSegment?
 
     var currentSegmentDuration: NSTimeInterval? {
         if let currentSegment = self.currentSegment {
@@ -61,7 +61,7 @@ class ThymeTimer : NSObject, NSCoding {
         }
     }
 
-    var state: ThymeState {
+    var state: StartWatchState {
         if (self.currentSegment?.lastStarted != nil) {
             return .Started
         } else if (self.currentSegment != nil) {
@@ -76,7 +76,7 @@ class ThymeTimer : NSObject, NSCoding {
         super.init()
     }
 
-    init(name: String, pastSegments: [ThymeSegment]?, currentSegment: ThymeSegment?) {
+    init(name: String, pastSegments: [StartWatchSegment]?, currentSegment: StartWatchSegment?) {
         self.name = name
         self.pastSegments = pastSegments
         self.currentSegment = currentSegment
@@ -85,7 +85,7 @@ class ThymeTimer : NSObject, NSCoding {
 
     func durationWithin(intervalBeforeNow: NSTimeInterval) -> NSTimeInterval {
         let dateTime = NSDate(timeIntervalSinceNow: -intervalBeforeNow)
-        let pastDuration = self.pastSegments?.reduce(0, combine: { (current: NSTimeInterval, nextSegment: ThymeSegment) -> NSTimeInterval in
+        let pastDuration = self.pastSegments?.reduce(0, combine: { (current: NSTimeInterval, nextSegment: StartWatchSegment) -> NSTimeInterval in
             return (dateTime.compare(nextSegment.creationDate) == .OrderedDescending) ? current : current + (nextSegment.duration ?? 0)
         })
         return (self.currentSegmentDuration ?? 0) + (pastDuration ?? 0)
@@ -106,9 +106,9 @@ class ThymeTimer : NSObject, NSCoding {
         return true
     }
 
-    class func debugTimer() -> ThymeTimer {
-        let newTimer = ThymeTimer(name: "Debug Timer")
-        newTimer.pastSegments = [ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -1000000), duration: 100, lastStarted: nil), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -20000000), duration: 200, lastStarted: nil), ThymeSegment(creationDate: NSDate(timeIntervalSinceNow: -30000000), duration: 100, lastStarted: nil)]
+    class func debugTimer() -> StartWatchTimer {
+        let newTimer = StartWatchTimer(name: "Debug Timer")
+        newTimer.pastSegments = [StartWatchSegment(creationDate: NSDate(timeIntervalSinceNow: -1000000), duration: 100, lastStarted: nil), StartWatchSegment(creationDate: NSDate(timeIntervalSinceNow: -20000000), duration: 200, lastStarted: nil), StartWatchSegment(creationDate: NSDate(timeIntervalSinceNow: -30000000), duration: 100, lastStarted: nil)]
         return newTimer
     }
 
@@ -118,8 +118,8 @@ class ThymeTimer : NSObject, NSCoding {
         guard let name = aDecoder.decodeObjectForKey("name") as? String else {
             return nil
         }
-        let pastSegments = aDecoder.decodeObjectForKey("pastSegments") as? [ThymeSegment]
-        let currentSegment = aDecoder.decodeObjectForKey("currentSegment") as? ThymeSegment
+        let pastSegments = aDecoder.decodeObjectForKey("pastSegments") as? [StartWatchSegment]
+        let currentSegment = aDecoder.decodeObjectForKey("currentSegment") as? StartWatchSegment
         self.init(name: name, pastSegments: pastSegments, currentSegment: currentSegment)
     }
 
