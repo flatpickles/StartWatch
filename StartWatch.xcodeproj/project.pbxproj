@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C9128C5D1C0BB15600F1D3E0 /* Thyme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thyme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9128C5D1C0BB15600F1D3E0 /* StartWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StartWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9128C601C0BB15600F1D3E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9128C651C0BB15600F1D3E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9128C671C0BB15700F1D3E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		C9128C541C0BB15600F1D3E0 = {
 			isa = PBXGroup;
 			children = (
-				C9128C5F1C0BB15600F1D3E0 /* Thyme */,
+				C9128C5F1C0BB15600F1D3E0 /* StartWatch */,
 				C9128C5E1C0BB15600F1D3E0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,12 +66,12 @@
 		C9128C5E1C0BB15600F1D3E0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9128C5D1C0BB15600F1D3E0 /* Thyme.app */,
+				C9128C5D1C0BB15600F1D3E0 /* StartWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9128C5F1C0BB15600F1D3E0 /* Thyme */ = {
+		C9128C5F1C0BB15600F1D3E0 /* StartWatch */ = {
 			isa = PBXGroup;
 			children = (
 				C9128C8A1C0C23F700F1D3E0 /* todo.txt */,
@@ -83,7 +83,7 @@
 				C9128C671C0BB15700F1D3E0 /* Assets.xcassets */,
 				C9128C6C1C0BB15700F1D3E0 /* Info.plist */,
 			);
-			path = Thyme;
+			path = StartWatch;
 			sourceTree = "<group>";
 		};
 		C9128C741C0BB5E800F1D3E0 /* Interfaces */ = {
@@ -129,9 +129,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9128C5C1C0BB15600F1D3E0 /* Thyme */ = {
+		C9128C5C1C0BB15600F1D3E0 /* StartWatch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9128C6F1C0BB15700F1D3E0 /* Build configuration list for PBXNativeTarget "Thyme" */;
+			buildConfigurationList = C9128C6F1C0BB15700F1D3E0 /* Build configuration list for PBXNativeTarget "StartWatch" */;
 			buildPhases = (
 				C9128C591C0BB15600F1D3E0 /* Sources */,
 				C9128C5A1C0BB15600F1D3E0 /* Frameworks */,
@@ -141,9 +141,9 @@
 			);
 			dependencies = (
 			);
-			name = Thyme;
+			name = StartWatch;
 			productName = Thyme;
-			productReference = C9128C5D1C0BB15600F1D3E0 /* Thyme.app */;
+			productReference = C9128C5D1C0BB15600F1D3E0 /* StartWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -161,7 +161,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C9128C581C0BB15600F1D3E0 /* Build configuration list for PBXProject "Thyme" */;
+			buildConfigurationList = C9128C581C0BB15600F1D3E0 /* Build configuration list for PBXProject "StartWatch" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -174,7 +174,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9128C5C1C0BB15600F1D3E0 /* Thyme */,
+				C9128C5C1C0BB15600F1D3E0 /* StartWatch */,
 			);
 		};
 /* End PBXProject section */
@@ -319,9 +319,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Thyme/Info.plist;
+				INFOPLIST_FILE = StartWatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = biz.man1.Thyme;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.man1.StartWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -330,9 +330,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Thyme/Info.plist;
+				INFOPLIST_FILE = StartWatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = biz.man1.Thyme;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.man1.StartWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -340,7 +340,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9128C581C0BB15600F1D3E0 /* Build configuration list for PBXProject "Thyme" */ = {
+		C9128C581C0BB15600F1D3E0 /* Build configuration list for PBXProject "StartWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9128C6D1C0BB15700F1D3E0 /* Debug */,
@@ -349,13 +349,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9128C6F1C0BB15700F1D3E0 /* Build configuration list for PBXNativeTarget "Thyme" */ = {
+		C9128C6F1C0BB15700F1D3E0 /* Build configuration list for PBXNativeTarget "StartWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9128C701C0BB15700F1D3E0 /* Debug */,
 				C9128C711C0BB15700F1D3E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
